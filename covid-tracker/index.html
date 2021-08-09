@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Covid tracker
+    </title>
+    <link rel="shortcut icon" href="./static/images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./static/css/grid.css">
+    <link rel="stylesheet" href="./static/css/app.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body class="loading">
+
+    <!-- top nav -->
+    <div class="nav-wrapper">
+        <div class="container">
+            <div class="nav">
+                <a href="" class="logo">
+                    Theo Dõi C<i class="bx bxs-virus-block bx-tada"></i>VID-19
+                </a>
+                <img src="data:image/jpeg;base64,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" 
+                    alt="" class="logo-img">
+                <div class="darkmode-switch" id="darkmode-switch">
+                    <span>
+                        <i class="bx bxs-moon"></i>
+                        <i class="bx bxs-sun"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end top nav -->
+
+    <!-- main content -->
+    <div class="content">
+        <div class="container">
+            <!-- country select -->
+            <div class="row">
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="box">
+                        <div class="country-select" id="country-select">
+                            <div class="country-select-toggle" id="country-select-toggle">
+                                <span>
+                                    Viet Nam
+                                </span>
+                                <i class="bx bx-chevron-down"></i>
+                            </div>
+                            <div class="country-select-list" id="country-select-list">
+                                <input type="text" placeholder="Search country name">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end country select -->
+
+            <!-- tracking information -->
+            <div class="row">
+                <!-- left content -->
+                <div class="col-8 col-md-12 col-sm-12">
+                    <div class="row">
+                        <!-- counter -->
+                        <div class="col-4 col-md-4 col-sm-12">
+                            <div class="box box-hover">
+                                <div class="count count-confirmed">
+                                    <div class="count-icon">
+                                        <i class="bx bxs-virus"></i>
+                                    </div>
+                                    <div class="count-info">
+                                        <h5 id="confirmed-total">123,456,789</h5>
+                                        <span>Số Ca Mắc</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- counter -->
+                        <!-- counter -->
+                        <div class="col-4 col-md-4 col-sm-12">
+                            <div class="box box-hover">
+                                <div class="count count-recovered">
+                                    <div class="count-icon">
+                                        <i class="bx bxs-smile"></i>
+                                    </div>
+                                    <div class="count-info">
+                                        <h5 id="recovered-total">123,456,789</h5>
+                                        <span>Số Ca Khỏi Bệnh</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- counter -->
+                        <!-- counter -->
+                        <div class="col-4 col-md-4 col-sm-12">
+                            <div class="box box-hover">
+                                <div class="count count-death">
+                                    <div class="count-icon">
+                                        <i class="bx bxs-sad"></i>
+                                    </div>
+                                    <div class="count-info">
+                                        <h5 id="death-total">123,456,789</h5>
+                                        <span>Số Ca Tử Vong</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- counter -->
+
+                        <!-- all time chart -->
+                        <div class="col-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    Toàn Bộ Thời Gian
+                                </div>
+                                <div class="box-body">
+                                    <div id="all-time-chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end all time chart -->
+
+                        <!-- embed video -->
+                        <div class="col-6 col-md-6 col-sm-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    NHỮNG ĐIỀU CẦN BIẾT KHI TIÊM CHỦNG VẮC XIN PHÒNG COVID-19
+                                </div>
+                                <div class="box-body">
+                                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/dr4OO0oSYi0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end embed video -->
+
+                        <!-- embed video -->
+                        <div class="col-6 col-md-6 col-sm-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    KHUYẾN CÁO PHÒNG, CHỐNG DỊCH COVID-19
+                                </div>
+                                <div class="box-body">
+                                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=PL58R_E_xzxrVYS9EzChzv4f-1tq3EvKqV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end embed video -->
+                        <div class="col-12">
+                            <div class="box">
+                                <div class="box-header">
+
+                                </div>
+                                <div class="box-body">
+                                    <iframe width="100%" height="470" src="https://data.vietnam.opendevelopmentmekong.net/vi/dataset/coronavirus-covid-19-cases-in-vietnam/resource/b15e8f4b-c905-48fb-973e-d412e2759f55/view/732cdd40-c250-4f5d-b8e3-9366a95ddf6c" frameBorder="0"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end left content -->
+
+                <!-- right content -->
+                <div class="col-4 col-md-12 col-sm-12">
+                    <!-- 30 days chart -->
+                    <div class="box">
+                        <div class="box-header">
+                            30 Ngày Gần Đây
+                        </div>
+                        <div class="box-body">
+                            <div id="days-chart"></div>
+                        </div>
+                    </div>
+                    <!-- end 30 days chart -->
+
+                    <!-- recovery rate chart -->
+                    <div class="box">
+                        <div class="box-header">
+                            Tỉ Lệ Khỏi Bệnh
+                        </div>
+                        <div class="box-body">
+                            <div id="recover-rate-chart"></div>
+                        </div>
+                    </div>
+                    <!-- end recovery rate chart -->
+                    
+                    <!-- top country affected -->
+                    <div class="box">
+                        <div class="box-header">
+                            Những Quốc Gia Chịu Ảnh Hưởng Nặng Nề Nhất
+                        </div>
+                        <div class="box-body">
+                            <table class="table-countries" id="table-countries">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Quốc Gia
+                                        </th>
+                                        <th>Số Ca Mắc</th>
+                                        <th>Số Ca Khỏi Bệnh</th>
+                                        <th>Số Ca Tử Vong</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- end top country affected -->
+                </div>
+                <!-- end right content -->
+            </div>
+            <!-- end tracking information -->
+        </div>
+    </div>
+    <!-- end main content -->
+
+    <!-- footer -->
+    <div class="footer">
+        Source from <a href="https://documenter.getpostman.com/view/10808728/SzS8rjbc#b07f97ba-24f4-4ebe-ad71-97fa35f3b683" target="_blank">api.covid19api.com</a>
+        <br>
+        Designed by Pham Gia Khanh</a>
+    </div>
+    <!-- end footer -->
+
+    <!-- loader -->
+    <div class="loader">
+        <i class="bx bxs-virus bx-spin"></i>
+    </div>
+    <!-- end loader -->
+
+    <!-- apexchart -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- JS -->
+    <script src="./static/js/fetchApi.js"></script>
+    <script src="./static/js/covidApi.js"></script>
+    <script src="./static/js/app.js"></script>
+</body>
+
+</html>
